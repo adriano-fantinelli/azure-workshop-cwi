@@ -22,4 +22,12 @@ steps:
 
 - script:  npx cypress run
   displayName: 'Executando testes'
-  
+  continueOnError: true
+
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junit*.xml'
+    mergeTestResults: true
+  continueOnError: true
